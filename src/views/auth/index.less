@@ -1,0 +1,77 @@
+body {
+    background-color: #eff1f3;
+}
+
+
+.rj-auth {
+    min-height: 100vh;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+
+    .box {
+        width: 70%;
+        background-color: #ffffff;
+        border-radius: 8px;
+        // padding:15px;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
+
+        &-left {
+            padding: 60px 40px 20px 40px;
+            text-align: center;
+
+            .ant-input {
+                border-radius: 4px;
+                height: 48px;
+                background-color: #f7fafc;
+                border-color: #edf2f7;
+            }
+
+            .ant-btn {
+                height: 48px;
+                border-radius: 4px;
+            }
+
+            .sigup-btn {
+              
+
+                .ant-btn {
+                    background:#028b9e;
+                    border-color: #027b8b;
+                }
+            }
+            .ant-divider-inner-text {
+                color:#c0bdbd;
+                font-size: 14px;
+            }
+
+            &-text{
+                font-size: 12px;
+                color:#c0bdbd;
+                a {
+                    color:#c0bdbd;
+                }
+            }
+        }
+
+        &-right{ 
+            height: 100%;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .sigin-bg {
+            background: url(../../assets/svg/coding.svg);
+            background-size: 100% 100%;
+            background-color:#40a9ff;
+        }
+
+        .sigup-bg {
+            background: url(../../assets/svg/installing.svg);
+            background-size: 100% 100%;
+            background-color:#028b9e;
+        }
+    
+    }
+
+}
