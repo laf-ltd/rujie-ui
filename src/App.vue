@@ -5,16 +5,21 @@
 </template>
 
 <script lang="ts">
+import { domTitle, setDocumentTitle } from '@/utils/domUtil'
 import zhCN from "ant-design-vue/es/locale/zh_CN";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   data() {
     return {
-       locale: zhCN
     }
   },
-  name: "App",
-  components: {},
+  computed:{
+    locale() {
+       const { title } = this.$route.meta
+       title && (setDocumentTitle(`${title} - ${domTitle}`))
+       return zhCN
+    }
+  }
 });
 </script>

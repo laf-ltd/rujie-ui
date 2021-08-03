@@ -25,6 +25,7 @@ export const WebRouterMap =
         {
           path: '/users',
           name: 'users',
+          meta: { title: '个人中心' },
           component: () => import('@/views/user/index.vue'),
         }
       ]
@@ -41,11 +42,13 @@ export const BaseRouterMap = [
   {
     path: "/signin",
     name: "signin",
+    meta: { title: '用户登录' },
     component: () => import("@/views/auth/signin.vue"),
   },
   {
     path: "/signup",
     name: "signup",
+    meta: { title: '用户注册' },
     component: () => import("@/views/auth/signup.vue"),
   }
 ]
