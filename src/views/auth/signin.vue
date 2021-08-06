@@ -51,11 +51,12 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, toRaw } from "vue";
+import { useUserStore } from "@/store/modules/user";
 
 export default defineComponent({
   setup() {
     const formRef = ref();
-
+    
     const formLogin = reactive({
       username: undefined,
       password: undefined,
@@ -76,23 +77,20 @@ export default defineComponent({
       formRef.value
         .validate()
         .then(() => {
-          console.log(toRaw(formLogin))
-          console.log("values", formLogin, toRaw(formLogin));
+          const userStore = useUserStore();
+          const userinfo = userStore.loginAction({});
+  
         })
         .catch((error: any) => {
           console.log("error", error);
         });
     };
 
-    const resetForm = () => {
-      (formLogin as any).value.resetFields();
-    };
     return {
       formRef,
       formLogin,
       rules,
       onSubmit,
-      resetForm,
     };
   },
 });

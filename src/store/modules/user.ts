@@ -1,29 +1,42 @@
 import { login, register } from '@/api/auth'
 import storage from 'store2'
+import { defineStore } from 'pinia'
+import { store } from '@/store'
 
-const user = {
-    state: {
-        token: '',
-        name: '',
-        info: {}
-    },
-    mutations: {
-        SET_TOKEN: (state: any, token: string) => {
-            state.token = token
-        },
-        SET_NAME: (state: any, name: string) => {
-            state.name = name
-        },
-        SET_INFO:(state: any, info: string) => {
-            state.info = info
+interface UserState {
+    name?: string;
+    token?: string;
+    info: Object
+}
+
+export const userStore = defineStore({
+    id: 'app-user',
+    state: (): UserState => ({
+        name: undefined,
+        info: {},
+        token: undefined
+    }),
+    getters: {
+        getToken(): undefined | string {
+            return this.token;
         }
     },
-    actions:{
-        //登录
-        Login({ commit } : any, userInfo:Object) {
-
-   
+    actions: {
+        setToken(token: string | undefined) {
+            this.token = token
+        },
+        async loginAction(params: any): Promise<Object | null> {
+            try {
+                const data = await login(params);
+                this.setToken(data.token);
+                return data;
+            } catch (error) {
+                return Promise.reject(error);
+            }
         }
     }
+})
 
+export function useUserStore() {
+    return userStore(store)
 }
